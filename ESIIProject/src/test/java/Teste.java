@@ -21,12 +21,12 @@ public class Teste {
 
     @Test//Teste com caminho para documento válido
     public void test1(){
-        assertEquals(true,fm.insertFile("C:\\Users\\Ricardo\\Documents\\GitHub\\ESIIProject\\ESIIProject\\DOC.txt"));
+        assertEquals(true,fm.insertFile("DOC.txt"));
     }
 
     @Test//Teste com caminho inválido
     public void test2(){
-        assertEquals(false,fm.insertFile("C:\\Users\\Ricardo\\Documents\\GitHub\\ESIIProject\\ESIIProject\\DO.txt"));
+        assertEquals(false,fm.insertFile("DO.txt"));
     }
 
 }
