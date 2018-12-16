@@ -25,8 +25,3 @@ test{
     finalizedBy jacocoTestReport
 }
 
-tasks.register("hello") {
-    doLast {
-        println 'Hello, World!'
-    }
-}
