@@ -21,12 +21,19 @@ public class Teste {
 
     @Test//Teste com caminho para documento válido
     public void test1(){
+
         assertEquals(true,fm.insertFile("DOC.txt"));
     }
 
     @Test//Teste com caminho inválido
     public void test2(){
+
         assertEquals(false,fm.insertFile("DO.txt"));
+    }
+
+    @Test//Teste com ficheiro não txt (Não funciona)
+    public void test3(){
+        assertEquals(null,fm.insertFile("DOC3.docx"));
     }
 
 }
