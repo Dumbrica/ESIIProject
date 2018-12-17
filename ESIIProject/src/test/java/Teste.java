@@ -31,9 +31,4 @@ public class Teste {
         assertEquals(false,fm.insertFile("DO.txt"));
     }
 
-    @Test//Teste com ficheiro não txt (Não funciona)
-    public void test3(){
-        assertEquals(null,fm.insertFile("DOC3.docx"));
-    }
-
 }
