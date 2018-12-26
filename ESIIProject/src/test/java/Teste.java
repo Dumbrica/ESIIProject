@@ -31,4 +31,12 @@ public class Teste {
         assertEquals(false,fm.insertFile("DO.txt"));
     }
 
+    @Test//Teste de remoção de digitos
+    public void test3(){
+
+        assertEquals("um dois tres",fm.removeDigits("um1 dois2 tres3"));
+    }
+
+
+
 }
