@@ -47,4 +47,8 @@ public class FileManager {
         texto=texto.replaceAll("[0-9]","");
         return texto;
     }
+
+    public void testMethod(){
+        System.out.println("Teste");
+    }
 }
