@@ -7,27 +7,23 @@ public class FileManager {
     private String[] files;
     private static int DEFAULT_SIZE = 5;
     private int filesCount = 0;
-    private String totalWords = "";
+    private String  totalWords ="";
 
     public FileManager() {
         files = new String[DEFAULT_SIZE];
     }
 
-    public FileManager(int files_size) {
+    public FileManager(int files_size){
         files = new String[files_size];
     }
-    public String removeDigits(String texto)
-    {
-        texto=texto.replaceAll("[0-9]", "");
-        return texto;
-    }
-    public boolean insertFile(String filePath) {
+
+    public boolean insertFile(String filePath){
 
         String aux;
 
         try {
-            aux = readFile(filePath);
-        } catch (IOException ex) {
+           aux = readFile(filePath);
+        }catch (IOException ex){
             return false;
         }
 
@@ -36,9 +32,15 @@ public class FileManager {
         totalWords = totalWords + files[filesCount];
         filesCount++;
 
-        return true;
+        return  true;
     }
 
+
+
+    public String removeDigits(String texto){
+        texto=texto.replaceAll("[0-9]","");
+        return texto;
+    }
     private String readFile(String filePath) throws IOException {
 
         String file = "";
@@ -47,7 +49,4 @@ public class FileManager {
 
         return file;
     }
-
-
 }
-
