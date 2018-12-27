@@ -36,7 +36,6 @@ public class FileManager {
         totalWords = totalWords + files[filesCount];
         filesCount++;
 
-        System.out.println(totalWords);
         return true;
     }
 
