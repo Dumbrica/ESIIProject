@@ -35,7 +35,13 @@ public class FileManager {
         System.out.println(totalWords);
         return  true;
     }
+    public String removeDigits(String file){
 
+        file = file.replaceAll("[0-9]","");
+
+        return file;
+
+    }
 
 
 
@@ -48,11 +54,5 @@ public class FileManager {
         return file;
     }
 
-    public String removeDigits(String file){
 
-        file = file.replaceAll("[0-9]","");
-
-        return file;
-
-    }
 }
