@@ -27,7 +27,7 @@ public class FileManager {
             return false;
         }
 
-        aux = aux.replaceAll("[0-9]","");
+        aux = removeDigits(aux);
         files[filesCount] = aux;
         totalWords = totalWords + files[filesCount];
         filesCount++;
@@ -46,5 +46,13 @@ public class FileManager {
         file = new String(Files.readAllBytes(Paths.get(filePath)));
 
         return file;
+    }
+
+    public String removeDigits(String file){
+
+        file = file.replaceAll("[0-9]","");
+
+        return file;
+
     }
 }
