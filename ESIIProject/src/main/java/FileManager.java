@@ -16,7 +16,11 @@ public class FileManager {
     public FileManager(int files_size) {
         files = new String[files_size];
     }
-
+    public String removeDigits(String texto)
+    {
+        texto=texto.replaceAll("[0-9]", "");
+        return texto;
+    }
     public boolean insertFile(String filePath) {
 
         String aux;
@@ -45,10 +49,6 @@ public class FileManager {
         return file;
     }
 
-    public String removeDigits(String texto)
-    {
-        texto=texto.replaceAll("[0-9]", "");
-        return texto;
-    }
+
 }
 
