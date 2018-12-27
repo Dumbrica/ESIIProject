@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Teste" tests="2" skipped="0" failures="0" errors="0" timestamp="2018-12-27T14:18:36" hostname="DESKTOP-CH24LBP" time="0.207">
+<testsuite name="Teste" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-12-27T14:55:29" hostname="DESKTOP-CH24LBP" time="0.308">
   <properties/>
-  <testcase name="test1()" classname="Teste" time="0.124"/>
-  <testcase name="test2()" classname="Teste" time="0.054"/>
-  <system-out><![CDATA[Um limão meio limão 
-]]></system-out>
+  <testcase name="test1()" classname="Teste" time="0.285"/>
+  <testcase name="test2()" classname="Teste" time="0.015"/>
+  <testcase name="test3()" classname="Teste" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
