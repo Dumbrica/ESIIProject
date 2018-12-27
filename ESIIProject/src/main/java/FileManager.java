@@ -34,7 +34,7 @@ public class FileManager {
         filesCount++;
 
         System.out.println(totalWords);
-        return true;
+        return  true;
     }
 
 
@@ -49,7 +49,7 @@ public class FileManager {
         return file;
     }
 
-     public String removeDigits(String file){
+    public String  removeDigits(String file){
 
         file = file.replaceAll("[0-9]","");
 
