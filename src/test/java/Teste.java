@@ -32,5 +32,9 @@ public class Teste {
 
         assertEquals("um dois tres",fm.removeDigits("um1 dois2 tres3"));
     }
+    @Test//Teste de remoção de digitos
+    public void test4(){
 
+        assertEquals("um dois tres",fm.removeChars("um? dois! tres#"));
+    }
 }

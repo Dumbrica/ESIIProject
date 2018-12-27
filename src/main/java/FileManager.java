@@ -27,7 +27,8 @@ public class FileManager {
             return false;
         }
 
-        aux = aux.replaceAll("[0-9]","");
+        aux = removeDigits(aux);
+		aux = removeChars(aux);
         files[filesCount] = aux;
         totalWords = totalWords + files[filesCount];
         filesCount++;
@@ -51,4 +52,9 @@ public class FileManager {
     public void testMethod(){
         System.out.println("Teste");
     }
+	public String removeChars(String texto){
+		texto=texto.replaceAll("[\"\\,\\.\\?\\!\\|\\[\\]\\{\\}\\/\\;\\:\\«\\»\\<\\>\\@\\£\\€\\§\\#\\$\\%\\&\\=\\)\\(\\*\\+\\~\\^\\_\\-]","");
+		return texto;
+		
+	}
 }
