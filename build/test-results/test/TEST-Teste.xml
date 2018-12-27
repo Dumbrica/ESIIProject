@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Teste" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-12-27T16:19:01" hostname="DESKTOP-CH24LBP" time="0.195">
+  <properties/>
+  <testcase name="test1()" classname="Teste" time="0.169"/>
+  <testcase name="test2()" classname="Teste" time="0.017"/>
+  <testcase name="test3()" classname="Teste" time="0.001"/>
+  <system-out><![CDATA[um limao meio limao
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
