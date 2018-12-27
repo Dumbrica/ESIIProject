@@ -50,7 +50,7 @@ public class FileManager {
     }
 
     public void testMethod(){
-        System.out.println("Teste2222");
+        System.out.println("Teste2222654256");
     }
 	public String removeChars(String texto){
 		texto=texto.replaceAll("[\"\\,\\.\\?\\!\\|\\[\\]\\{\\}\\/\\;\\:\\«\\»\\<\\>\\@\\£\\€\\§\\#\\$\\%\\&\\=\\)\\(\\*\\+\\~\\^\\_\\-]","");
