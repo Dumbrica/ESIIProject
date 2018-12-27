@@ -26,8 +26,8 @@ public class FileManager {
         }catch (IOException ex){
             return false;
         }
-        aux=aux.replaceAll("[0-9]","");
-       // aux = removeDigits(aux);
+
+        aux = aux.replaceAll("[0-9]","");
         files[filesCount] = aux;
         totalWords = totalWords + files[filesCount];
         filesCount++;
@@ -47,6 +47,4 @@ public class FileManager {
 
         return file;
     }
-
-
 }
