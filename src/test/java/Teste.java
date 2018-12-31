@@ -32,9 +32,39 @@ public class Teste {
 
         assertEquals("um dois tres",fm.removeDigits("um1 dois2 tres3"));
     }
-    @Test//Teste de remoção de digitos
+    @Test//Teste de remoção de carateres de pontuação
     public void test4(){
 
         assertEquals("um dois tres",fm.removeChars("um? dois! tres#"));
+    }
+    @Test
+    public void test5() {
+        String[] teste = {"ola", "ola2", "ola3"};
+        String[] teste2=fm.uniqueWords("ola ola2 ola ola3 ");
+         assertAll(
+                () -> assertTrue((teste[0].compareTo(teste2[0])) == 0),
+                () -> assertTrue((teste[1].compareTo(teste2[1])) == 0),
+                () -> assertTrue((teste[2].compareTo(teste2[2])) == 0)
+        );
+
+    }
+    @Test
+    public void test6(){
+        fm.insertFile("DOC.txt");
+        fm.insertFile("DOC2.txt");
+        int[][] aux=fm.matrizOrganizer(fm.uniqueWords(fm.getTotalWords()));
+
+        assertAll(
+                () -> assertEquals(1,aux[0][0]),
+                () -> assertEquals(3,aux[0][1]),
+                () -> assertEquals(1,aux[0][2]),
+                () -> assertEquals(0,aux[0][3]),
+                () -> assertEquals(0,aux[0][4]),
+                () -> assertEquals(2,aux[1][0]),
+                () -> assertEquals(1,aux[1][1]),
+                () -> assertEquals(0,aux[1][2]),
+                () -> assertEquals(1,aux[1][3]),
+                () -> assertEquals(1,aux[1][4])
+        );
     }
 }
