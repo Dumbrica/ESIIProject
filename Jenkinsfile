@@ -4,7 +4,8 @@ pipeline {
         stage('Build') {
             steps {
                 checkout scm
-                sudo sh './gradlew build'
+                chmod +x gradlew
+                sh './gradlew build'
             }
         }
     }
