@@ -1,3 +1,11 @@
-node{
-    echo 'Hello World'
+pipeline {
+agent any
+stages {
+stage('Build') {
+steps {
+checkout scm
+sh './gradlew build'
+}
+}
+}
 }
