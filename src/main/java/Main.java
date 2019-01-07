@@ -22,6 +22,12 @@ public class Main {
         for(double i :matrizMQuery){
             System.out.print(i+"|");
         }
+        System.out.println();
+
+        double[] grauSim=teste.calculoGrauS(matrizMFiles,matrizMQuery);
+        for(double i : grauSim){
+            System.out.println(i);
+        }
     }
 
 }

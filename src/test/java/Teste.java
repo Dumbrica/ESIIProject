@@ -22,7 +22,6 @@ public class Teste {
     public void test1(){
         assertEquals(true,fm.insertFile("DOC.txt"));
     }
-
     @Test//Teste com caminho inválido
     public void test2(){
         assertEquals(false,fm.insertFile("DO.txt"));
@@ -66,5 +65,23 @@ public class Teste {
                 () -> assertEquals(1,aux[1][3]),
                 () -> assertEquals(1,aux[1][4])
         );
+    }
+    @Test
+    public void test7(){
+        fm.insertFile("um.txt");
+        fm.insertFile("dois.txt");
+        fm.insertQuery("um dois tres");
+        int[] matrizQQuery=fm.matrizOrganizer("um dois tres",fm.uniqueWords(fm.getTotalWords()));
+        assertAll(
+                () -> assertEquals(1,matrizQQuery[0]),
+                () -> assertEquals(1,matrizQQuery[1]),
+                () -> assertEquals(1,matrizQQuery[2]),
+                () -> assertEquals(0,matrizQQuery[3]),
+                () -> assertEquals(0,matrizQQuery[4])
+        );
+    }
+    @Test
+    public void test8(){
+        assertEquals("um dois tres",fm.insertQuery("Um2! dois Tres"));
     }
 }
