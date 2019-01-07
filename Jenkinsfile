@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 checkout scm
-                sudo sh './gradlew build'
+                sh './gradlew build'
             }
         }
     }
