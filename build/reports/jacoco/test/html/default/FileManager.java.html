@@ -1,155 +1,52 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FileManager.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ESIIProject</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">FileManager.java</span></div><h1>FileManager.java</h1><pre class="source lang-java linenums">import java.io.IOException;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FileManager.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ESIIProject</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">FileManager.java</span></div><h1>FileManager.java</h1><pre class="source lang-java linenums">import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.*;
 
 public class FileManager {
 
     private String[] files;
-<span class="fc" id="L9">    private static int DEFAULT_SIZE = 5;</span>
-<span class="fc" id="L10">    private int filesCount = 0;</span>
-<span class="fc" id="L11">    private String totalWords =&quot;&quot;;</span>
-<span class="fc" id="L12">    private String query=&quot;&quot;;</span>
-<span class="fc" id="L13">    public FileManager() {</span>
-<span class="fc" id="L14">        files = new String[DEFAULT_SIZE];</span>
-<span class="fc" id="L15">    }</span>
+<span class="fc" id="L8">    private static int DEFAULT_SIZE = 5;</span>
+<span class="fc" id="L9">    private int filesCount = 0;</span>
+<span class="fc" id="L10">    private String  totalWords =&quot;&quot;;</span>
 
-<span class="fc" id="L17">    public FileManager(int files_size){</span>
-<span class="fc" id="L18">        files = new String[files_size];</span>
-<span class="fc" id="L19">    }</span>
+<span class="fc" id="L12">    public FileManager() {</span>
+<span class="fc" id="L13">        files = new String[DEFAULT_SIZE];</span>
+<span class="fc" id="L14">    }</span>
+
+<span class="fc" id="L16">    public FileManager(int files_size){</span>
+<span class="fc" id="L17">        files = new String[files_size];</span>
+<span class="fc" id="L18">    }</span>
 
     public boolean insertFile(String filePath){
 
         String aux;
 
         try {
-<span class="fc" id="L26">            aux = readFile(filePath);</span>
-<span class="fc" id="L27">        }catch (IOException ex){</span>
-<span class="fc" id="L28">            return false;</span>
-<span class="fc" id="L29">        }</span>
+<span class="fc" id="L25">            aux = readFile(filePath);</span>
+<span class="fc" id="L26">        }catch (IOException ex){</span>
+<span class="fc" id="L27">            return false;</span>
+<span class="fc" id="L28">        }</span>
 
-<span class="fc" id="L31">        aux = removeDigits(aux);</span>
-<span class="fc" id="L32">		aux = removeChars(aux);</span>
-<span class="fc" id="L33">		aux = aux.toLowerCase();</span>
-<span class="fc" id="L34">        files[filesCount] = aux;</span>
-<span class="fc" id="L35">        totalWords = totalWords  + files[filesCount] + &quot; &quot;;</span>
-<span class="fc" id="L36">        filesCount++;</span>
+<span class="fc" id="L30">        aux = aux.replaceAll(&quot;[0-9]&quot;,&quot;&quot;);</span>
+<span class="fc" id="L31">        files[filesCount] = aux;</span>
+<span class="fc" id="L32">        totalWords = totalWords + files[filesCount];</span>
+<span class="fc" id="L33">        filesCount++;</span>
 
-<span class="fc" id="L38">        return  true;</span>
+<span class="fc" id="L35">        System.out.println(totalWords);</span>
+<span class="fc" id="L36">        return  true;</span>
     }
-    public String insertQuery(String query){
-<span class="nc" id="L41">        query=removeChars(query);</span>
-<span class="nc" id="L42">        query=removeDigits(query);</span>
-<span class="nc" id="L43">        totalWords=totalWords + query + &quot; &quot;;</span>
-<span class="nc" id="L44">        this.query=query;</span>
-<span class="nc" id="L45">        return this.query;</span>
-    }
+
     private String readFile(String filePath) throws IOException {
 
-<span class="fc" id="L49">        String file = &quot;&quot;;</span>
+<span class="fc" id="L41">        String file = &quot;&quot;;</span>
 
-<span class="fc" id="L51">        file = new String(Files.readAllBytes(Paths.get(filePath)));</span>
+<span class="fc" id="L43">        file = new String(Files.readAllBytes(Paths.get(filePath)));</span>
 
-<span class="fc" id="L53">        return file;</span>
+<span class="fc" id="L45">        return file;</span>
     }
     public String removeDigits(String texto){
-<span class="fc" id="L56">        texto=texto.replaceAll(&quot;[0-9]&quot;,&quot;&quot;);</span>
-<span class="fc" id="L57">        return texto;</span>
+<span class="fc" id="L48">        texto=texto.replaceAll(&quot;[0-9]&quot;,&quot;&quot;);</span>
+<span class="fc" id="L49">        return texto;</span>
     }
-	public String removeChars(String texto){
-<span class="fc" id="L60">		texto=texto.replaceAll(&quot;[\&quot;\\,\\.\\?\\!\\|\\[\\]\\{\\}\\/\\;\\:\\Â«\\Â»\\&lt;\\&gt;\\@\\Â£\\â‚¬\\Â§\\#\\$\\%\\&amp;\\=\\)\\(\\*\\+\\~\\^\\_\\-]&quot;,&quot;&quot;);</span>
-<span class="fc" id="L61">		return texto;</span>
-		
-	}
-        //MÃ©todo para limpar palavras repetidas de uma string
-	public String[] uniqueWords(String texto){
-<span class="fc" id="L66">        String[] aux=texto.split(&quot; &quot;);</span>
-<span class="pc bpc" id="L67" title="1 of 2 branches missed.">        if(aux.length&lt;2)</span>
-<span class="nc" id="L68">            return aux;</span>
-<span class="fc" id="L69">        Set&lt;String&gt; unique=new LinkedHashSet&lt;String&gt;();</span>
-<span class="fc bfc" id="L70" title="All 2 branches covered.">        for(String i : aux){</span>
-<span class="fc bfc" id="L71" title="All 2 branches covered.">            if(!unique.contains(i)) {</span>
-<span class="fc" id="L72">                unique.add(i);</span>
-            }
-        }
-<span class="fc" id="L75">        Iterator itr=unique.iterator();</span>
-
-<span class="fc" id="L77">        String[] aux2=unique.toArray(new String[0]);</span>
-<span class="fc" id="L78">            return aux2;</span>
-    }
-    //mÃ©todo para obter a quantidade de cada palavra nos ficheiros
-    public int[][] matrizOrganizer(String[] uniqueWords){
-<span class="fc" id="L82">        int numeroDoc=filesCount,numeroPalavras=uniqueWords.length,count,h;</span>
-        String[] aux;
-
-<span class="fc" id="L85">        int[][] matrizM=new int[numeroDoc][numeroPalavras];</span>
-<span class="fc bfc" id="L86" title="All 2 branches covered.">        for(int i=0;i&lt;numeroDoc;i++){</span>
-<span class="fc" id="L87">            aux=files[i].split(&quot; &quot;);</span>
-<span class="fc bfc" id="L88" title="All 2 branches covered.">            for(int j=0;j&lt;numeroPalavras;j++){</span>
-<span class="fc" id="L89">                count=0;</span>
-<span class="fc" id="L90">                h=0;</span>
-<span class="fc bfc" id="L91" title="All 2 branches covered.">                while(h&lt;aux.length){</span>
-<span class="fc bfc" id="L92" title="All 2 branches covered.">                    if(uniqueWords[j].compareTo(aux[h])==0){</span>
-<span class="fc" id="L93">                        count++;</span>
-                    }
-
-<span class="fc" id="L96">                    h++;</span>
-                }
-<span class="fc" id="L98">                matrizM[i][j]=count;</span>
-            }
-        }
-
-
-<span class="fc" id="L103">        return matrizM;</span>
-    }
-    //metodo para obter a quantidade de cada palavra na query
-    public int[] matrizOrganizer(String query,String[] uniqueWords){
-        int count,h;
-<span class="nc" id="L108">        int[] queryArray=new int[uniqueWords.length];</span>
-<span class="nc" id="L109">        String[] queroA=query.split(&quot; &quot;);</span>
-<span class="nc bnc" id="L110" title="All 2 branches missed.">        for(int i=0;i&lt;uniqueWords.length;i++){</span>
-<span class="nc" id="L111">            count=0;</span>
-<span class="nc" id="L112">            h=0;</span>
-<span class="nc bnc" id="L113" title="All 2 branches missed.">            while(h&lt;queroA.length){</span>
-<span class="nc bnc" id="L114" title="All 2 branches missed.">                if(uniqueWords[i].compareTo(queroA[h])==0){</span>
-<span class="nc" id="L115">                    count++;</span>
-                }
-<span class="nc" id="L117">                h++;</span>
-            }
-<span class="nc" id="L119">            queryArray[i]=count;</span>
-        }
-<span class="nc" id="L121">        return queryArray;</span>
-    }
-    public double[][] matrizModifier(int[][] matrizM,String[] totalWordsM){
-<span class="nc" id="L124">        int contadoc=0;</span>
-<span class="nc" id="L125">        double[][] matrizOut=new double[filesCount][totalWordsM.length];</span>
-<span class="nc bnc" id="L126" title="All 2 branches missed.">        for(int i=0;i&lt;filesCount;i++){</span>
-<span class="nc bnc" id="L127" title="All 2 branches missed.">            for(int j=0;j&lt; totalWordsM.length;j++){</span>
-<span class="nc" id="L128">            contadoc=0;</span>
-<span class="nc bnc" id="L129" title="All 2 branches missed.">            for(int h=0;h&lt;filesCount;h++){</span>
-<span class="nc bnc" id="L130" title="All 2 branches missed.">                if(matrizM[h][j]&gt;0)contadoc++;</span>
-            }
-<span class="nc" id="L132">            matrizOut[i][j]=matrizM[i][j]*(1+Math.log10((filesCount/contadoc)));</span>
-            }
-        }
-<span class="nc" id="L135">        return matrizOut;</span>
-    }
-    public double[] matrizModifier(int[] queryArray,int[][] matrizM,String[] totalWordsM){
-<span class="nc" id="L138">        double[] matrizOut=new double[totalWordsM.length];</span>
-<span class="nc" id="L139">        int contadoc=0;</span>
-<span class="nc bnc" id="L140" title="All 2 branches missed.">        for(int i=0;i&lt;totalWordsM.length;i++){</span>
-<span class="nc" id="L141">            contadoc=0;</span>
-<span class="nc bnc" id="L142" title="All 2 branches missed.">            for(int h=0;h&lt;filesCount;h++){</span>
-<span class="nc bnc" id="L143" title="All 2 branches missed.">                if(matrizM[h][i]&gt;0)contadoc++;</span>
-            }
-<span class="nc" id="L145">            matrizOut[i]=queryArray[i]*(1+Math.log10((filesCount/contadoc)));</span>
-        }
-
-<span class="nc" id="L148">        return matrizOut;</span>
-    }
-    public String getTotalWords(){
-<span class="fc" id="L151">        return totalWords;</span>
-    }
-<span class="nc" id="L153">    public String getQuery(){ return query; }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

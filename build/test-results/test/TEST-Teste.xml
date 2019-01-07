@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Teste" tests="6" skipped="0" failures="0" errors="0" timestamp="2019-01-07T12:41:28" hostname="DESKTOP-E6JG4C3" time="0.291">
+<testsuite name="Teste" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-12-27T16:19:01" hostname="DESKTOP-CH24LBP" time="0.195">
   <properties/>
-  <testcase name="test1()" classname="Teste" time="0.06"/>
-  <testcase name="test2()" classname="Teste" time="0.006"/>
-  <testcase name="test3()" classname="Teste" time="0.005"/>
-  <testcase name="test4()" classname="Teste" time="0.006"/>
-  <testcase name="test5()" classname="Teste" time="0.016"/>
-  <testcase name="test6()" classname="Teste" time="0.031"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="test1()" classname="Teste" time="0.169"/>
+  <testcase name="test2()" classname="Teste" time="0.017"/>
+  <testcase name="test3()" classname="Teste" time="0.001"/>
+  <system-out><![CDATA[um limao meio limao
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

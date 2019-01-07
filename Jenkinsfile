@@ -32,6 +32,7 @@ node{
 >>>>>>> parent of b54ee67... Rename JenkinsFile to Jenkinsfile:JenkinsFile
 =======
 pipeline {
+<<<<<<< HEAD
     agent any
      stages {
         stage('Build') {
@@ -58,3 +59,15 @@ pipeline {
      }
 }
 >>>>>>> parent of 980f03f... Gradle e Jenkinsfile
+=======
+agent any
+stages {
+stage('Build') {
+steps {
+checkout scm
+sh './gradlew build'
+}
+}
+}
+}
+>>>>>>> parent of 252b386... Gradle e Jenkinsfile
