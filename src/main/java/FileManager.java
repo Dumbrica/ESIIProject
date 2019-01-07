@@ -56,6 +56,7 @@ public class FileManager {
         texto=texto.replaceAll("[0-9]","");
         return texto;
     }
+<<<<<<< HEAD
 	public String removeChars(String texto){
 		texto=texto.replaceAll("[\"\\,\\.\\?\\!\\|\\[\\]\\{\\}\\/\\;\\:\\«\\»\\<\\>\\@\\£\\€\\§\\#\\$\\%\\&\\=\\)\\(\\*\\+\\~\\^\\_\\-]","");
 		return texto;
@@ -151,4 +152,6 @@ public class FileManager {
         return totalWords;
     }
     public String getQuery(){ return query; }
+=======
+>>>>>>> parent of 9fd5efc... testMethod
 }
