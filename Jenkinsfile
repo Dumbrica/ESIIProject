@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD:Jenkinsfile
 pipeline {
 agent any
@@ -29,3 +30,26 @@ node{
 =======
 }
 >>>>>>> parent of b54ee67... Rename JenkinsFile to Jenkinsfile:JenkinsFile
+=======
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
+}
+>>>>>>> parent of 99b841f... Jenkinsfile
