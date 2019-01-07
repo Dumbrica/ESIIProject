@@ -21,6 +21,9 @@ dependencies {
     )
 }
 
+task wrapper(type: Wrapper) {
+    gradleVersion = '5.0' //version required
+}
 
 test{
     useJUnitPlatform()

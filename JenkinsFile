@@ -33,13 +33,14 @@ node{
 =======
 pipeline {
     agent any
-
-    stages {
+     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                checkout scm
+                sh './gradlew build'
             }
         }
+<<<<<<< HEAD
         stage('Test') {
             steps {
                 echo 'Testing..'
@@ -53,3 +54,7 @@ pipeline {
     }
 }
 >>>>>>> parent of 99b841f... Jenkinsfile
+=======
+     }
+}
+>>>>>>> parent of 980f03f... Gradle e Jenkinsfile
