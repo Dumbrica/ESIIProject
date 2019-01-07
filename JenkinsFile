@@ -3,6 +3,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD:Jenkinsfile
 pipeline {
+<<<<<<< HEAD
 agent any
 stages {
 stage('Build') {
@@ -42,6 +43,15 @@ pipeline {
             }
         }
 <<<<<<< HEAD
+=======
+ agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
+        }
+>>>>>>> parent of 91a886a... Por favor upsource
         stage('Test') {
             steps {
                 echo 'Testing..'
@@ -53,6 +63,7 @@ pipeline {
             }
         }
     }
+<<<<<<< HEAD
 }
 >>>>>>> parent of 99b841f... Jenkinsfile
 =======
@@ -71,3 +82,6 @@ sh './gradlew build'
 }
 }
 >>>>>>> parent of 252b386... Gradle e Jenkinsfile
+=======
+}
+>>>>>>> parent of 91a886a... Por favor upsource
