@@ -23,5 +23,9 @@ node{
 =======
 node{
     echo 'Hello World'
+<<<<<<< HEAD:Jenkinsfile
+}
+>>>>>>> parent of b54ee67... Rename JenkinsFile to Jenkinsfile:JenkinsFile
+=======
 }
 >>>>>>> parent of b54ee67... Rename JenkinsFile to Jenkinsfile:JenkinsFile
