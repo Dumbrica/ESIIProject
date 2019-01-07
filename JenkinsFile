@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <<<<<<< HEAD:Jenkinsfile
 pipeline {
 agent any
@@ -9,6 +10,10 @@ sh './gradlew build'
 }
 }
 }
+=======
+node{
+    echo 'Hello World'
+>>>>>>> parent of bb70ecd... Jenkinsfile
 }
 =======
 node{
