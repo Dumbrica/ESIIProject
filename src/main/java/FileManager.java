@@ -9,7 +9,7 @@ public class FileManager {
     private static int DEFAULT_SIZE = 5;
     private int filesCount = 0;
     private String totalWords ="";
-
+    private String query="";
     public FileManager() {
         files = new String[DEFAULT_SIZE];
     }
@@ -37,7 +37,13 @@ public class FileManager {
 
         return  true;
     }
-
+    public String insertQuery(String query){
+        query=removeChars(query);
+        query=removeDigits(query);
+        totalWords=totalWords + query + " ";
+        this.query=query;
+        return this.query;
+    }
     private String readFile(String filePath) throws IOException {
 
         String file = "";
@@ -50,13 +56,11 @@ public class FileManager {
         texto=texto.replaceAll("[0-9]","");
         return texto;
     }
-
 	public String removeChars(String texto){
 		texto=texto.replaceAll("[\"\\,\\.\\?\\!\\|\\[\\]\\{\\}\\/\\;\\:\\«\\»\\<\\>\\@\\£\\€\\§\\#\\$\\%\\&\\=\\)\\(\\*\\+\\~\\^\\_\\-]","");
 		return texto;
 		
 	}
-
         //Método para limpar palavras repetidas de uma string
 	public String[] uniqueWords(String texto){
         String[] aux=texto.split(" ");
@@ -73,6 +77,7 @@ public class FileManager {
         String[] aux2=unique.toArray(new String[0]);
             return aux2;
     }
+    //método para obter a quantidade de cada palavra nos ficheiros
     public int[][] matrizOrganizer(String[] uniqueWords){
         int numeroDoc=filesCount,numeroPalavras=uniqueWords.length,count,h;
         String[] aux;
@@ -97,7 +102,53 @@ public class FileManager {
 
         return matrizM;
     }
+    //metodo para obter a quantidade de cada palavra na query
+    public int[] matrizOrganizer(String query,String[] uniqueWords){
+        int count,h;
+        int[] queryArray=new int[uniqueWords.length];
+        String[] queroA=query.split(" ");
+        for(int i=0;i<uniqueWords.length;i++){
+            count=0;
+            h=0;
+            while(h<queroA.length){
+                if(uniqueWords[i].compareTo(queroA[h])==0){
+                    count++;
+                }
+                h++;
+            }
+            queryArray[i]=count;
+        }
+        return queryArray;
+    }
+    public double[][] matrizModifier(int[][] matrizM,String[] totalWordsM){
+        int contadoc=0;
+        double[][] matrizOut=new double[filesCount][totalWordsM.length];
+        for(int i=0;i<filesCount;i++){
+            for(int j=0;j< totalWordsM.length;j++){
+            contadoc=0;
+            for(int h=0;h<filesCount;h++){
+                if(matrizM[h][j]>0)contadoc++;
+            }
+            matrizOut[i][j]=matrizM[i][j]*(1+Math.log10((filesCount/contadoc)));
+            }
+        }
+        return matrizOut;
+    }
+    public double[] matrizModifier(int[] queryArray,int[][] matrizM,String[] totalWordsM){
+        double[] matrizOut=new double[totalWordsM.length];
+        int contadoc=0;
+        for(int i=0;i<totalWordsM.length;i++){
+            contadoc=0;
+            for(int h=0;h<filesCount;h++){
+                if(matrizM[h][i]>0)contadoc++;
+            }
+            matrizOut[i]=queryArray[i]*(1+Math.log10((filesCount/contadoc)));
+        }
+
+        return matrizOut;
+    }
     public String getTotalWords(){
         return totalWords;
     }
+    public String getQuery(){ return query; }
 }
