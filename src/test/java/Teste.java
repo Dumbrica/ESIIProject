@@ -30,23 +30,29 @@ public class Teste {
         assertEquals(false,fm.insertFile("DO.txt"));
     }
 
-    //Teste para removeDigits()
+    //Teste para insertFile com caminho inválido()
     @Test
     public void test3(){
+        assertEquals(false,fm.insertFile(""));
+    }
+
+    //Teste para removeDigits()
+    @Test
+    public void test4(){
 
         assertEquals("um dois tres",fm.removeDigits("um1 dois2 tres3"));
     }
 
     //Teste para removeChars()
     @Test
-    public void test4(){
+    public void test5(){
 
         assertEquals("um dois tres",fm.removeChars("um? dois! tres#"));
     }
 
     //Teste para uniqueWords()
     @Test
-    public void test5() {
+    public void test6() {
         String[] teste = {"um", "dois", "tres"};
         String[] teste2=fm.uniqueWords("um dois tres tres");
         assertAll(
@@ -59,7 +65,7 @@ public class Teste {
 
     //Teste para uniqueWords() (aux)
     @Test
-    public void test6(){
+    public void test7(){
         String[] teste = {"HelloWorld"};
         String[] teste2=fm.uniqueWords("HelloWorld");
         assertTrue((teste[0].compareTo(teste2[0])) == 0);
@@ -69,7 +75,7 @@ public class Teste {
 
     //Teste para matrizOrganizer() para ficheiros
     @Test
-    public void test7(){
+    public void test8(){
         fm.insertFile("DOC.txt");
         fm.insertFile("DOC2.txt");
         int[][] aux=fm.matrizOrganizer(fm.uniqueWords(fm.getTotalWords()));
@@ -90,7 +96,7 @@ public class Teste {
 
     //Teste para matrizOrganizer() para query
     @Test
-    public void test8(){
+    public void test9(){
         fm.insertFile("um.txt");
         fm.insertFile("dois.txt");
         fm.insertQuery("um dois tres");
@@ -106,39 +112,39 @@ public class Teste {
 
     //Teste para insertQuery() quando query válida
     @Test
-    public void test9(){
+    public void test10(){
         assertTrue(fm.insertQuery("Um2! dois Tres"));
     }
 
     //Teste para insertQuery() quando query inválida
     @Test
-    public void test10(){
+    public void test11(){
         assertFalse(fm.insertQuery(""));
     }
 
 
     //Teste para getQuery()
     @Test
-    public void test11(){
+    public void test12(){
         fm.insertQuery("Um1 dois2 tres3!");
         assertEquals("um dois tres", fm.getQuery());
     }
 
     //Teste para matrizModifier() para matrizM
     @Test
-    public void test12(){
+    public void test13(){
 
     }
 
     //Teste para matrizModifier() para matrizQ
     @Test
-    public void test13(){
+    public void test14(){
 
     }
 
     //Teste para calculoGrauS
     @Test
-    public void test14(){
+    public void test15(){
 
     }
 
