@@ -43,13 +43,14 @@ public class FileManager {
     }
 
     //método para inserir query
-    public String insertQuery(String query){
+    public Boolean insertQuery(String query){
+        if(query.compareTo("")==0)return false;
         query=removeChars(query);
         query=removeDigits(query);
         query=query.toLowerCase();
         totalWords=totalWords + query + " ";
         this.query=query;
-        return this.query;
+        return true;
     }
 
     //método para ler ficheiro

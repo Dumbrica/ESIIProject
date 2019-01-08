@@ -4,7 +4,9 @@ public class Main {
         teste.insertFile("um.txt");
         teste.insertFile("dois.txt");
         String query="um dois tres";
-        query=teste.insertQuery(query);
+        teste.insertQuery(query);
+        query=teste.getQuery();
+
         String[] totalWords =teste.uniqueWords(teste.getTotalWords());
         // matriz com a quantidade de palavras nos ficheiros
         int[][] matrizQFiles=teste.matrizOrganizer(totalWords);

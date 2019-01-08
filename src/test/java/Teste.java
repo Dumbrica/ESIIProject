@@ -104,34 +104,41 @@ public class Teste {
         );
     }
 
-    //Teste para insertQuery()
+    //Teste para insertQuery() para true
     @Test
     public void test9(){
-        assertEquals("um dois tres",fm.insertQuery("Um2! dois Tres"));
+        assertTrue(fm.insertQuery("Um2! dois Tres"));
     }
+
+    //Teste para insertQuery() para false
+    @Test
+    public void test10(){
+        assertFalse(fm.insertQuery(""));
+    }
+
 
     //Teste para getQuery()
     @Test
-    public void test10(){
+    public void test11(){
         fm.insertQuery("Um1 dois2 tres3!");
         assertEquals("um dois tres", fm.getQuery());
     }
 
     //Teste para matrizModifier() para matrizM
     @Test
-    public void test11(){
+    public void test12(){
 
     }
 
     //Teste para matrizModifier() para matrizQ
     @Test
-    public void test12(){
+    public void test13(){
 
     }
 
     //Teste para calculoGrauS
     @Test
-    public void test13(){
+    public void test14(){
 
     }
 
