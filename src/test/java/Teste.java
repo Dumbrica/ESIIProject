@@ -1,52 +1,63 @@
 
-        import static org.junit.jupiter.api.Assertions.*;
-        import org.junit.jupiter.api.BeforeAll;
-        import org.junit.jupiter.api.BeforeEach;
-        import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 
 public class Teste {
 
-
+    //Instânciar FileManager
     FileManager fm;
     FileManager fm2;
 
+    //Executa antes de cada teste
     @BeforeEach
     public void init(){
         fm = new FileManager();
         fm2 = new FileManager(20);
     }
 
-
-    @Test//Teste com caminho para documento válido
+    //Teste com caminho para documento válido
+    @Test
     public void test1(){
         assertEquals(true,fm.insertFile("DOC.txt"));
     }
-    @Test//Teste com caminho inválido
+
+    //Teste com caminho inválido
+    @Test
     public void test2(){
         assertEquals(false,fm.insertFile("DO.txt"));
     }
-    @Test//Teste de remoção de digitos
+
+    //Teste de remoção de digitos
+    @Test
     public void test3(){
 
         assertEquals("um dois tres",fm.removeDigits("um1 dois2 tres3"));
     }
-    @Test//Teste de remoção de carateres de pontuação
+
+    //Teste de remoção de carateres de pontuação
+    @Test
     public void test4(){
 
         assertEquals("um dois tres",fm.removeChars("um? dois! tres#"));
     }
+
+    //Teste para uniqueWords
     @Test
     public void test5() {
         String[] teste = {"ola", "ola2", "ola3"};
         String[] teste2=fm.uniqueWords("ola ola2 ola ola3 ");
-         assertAll(
+        assertAll(
                 () -> assertTrue((teste[0].compareTo(teste2[0])) == 0),
                 () -> assertTrue((teste[1].compareTo(teste2[1])) == 0),
                 () -> assertTrue((teste[2].compareTo(teste2[2])) == 0)
         );
 
     }
+
+    //Teste para matrizOrganizer() para ficheiros
     @Test
     public void test6(){
         fm.insertFile("DOC.txt");
@@ -66,6 +77,8 @@ public class Teste {
                 () -> assertEquals(1,aux[1][4])
         );
     }
+
+    //Teste para matrizOrganizer() para query
     @Test
     public void test7(){
         fm.insertFile("um.txt");
@@ -80,15 +93,17 @@ public class Teste {
                 () -> assertEquals(0,matrizQQuery[4])
         );
     }
+
+    //Teste para insertQuery()
     @Test
     public void test8(){
         assertEquals("um dois tres",fm.insertQuery("Um2! dois Tres"));
     }
 
-//teste para getQuery()
+    //Teste para getQuery()
     @Test
     public void test9(){
         fm.insertQuery("Um1 dois2 tres3!");
-assertEquals("um dois tres", fm.getQuery());
+        assertEquals("um dois tres", fm.getQuery());
     }
 }
