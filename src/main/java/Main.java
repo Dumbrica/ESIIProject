@@ -8,7 +8,8 @@ public class Main {
         query=teste.getQuery();
 
         String[] totalWords =teste.uniqueWords(teste.getTotalWords());
-        // matriz com a quantidade de palavras nos ficheiros
+
+        //Matriz com a quantidade de palavras nos ficheiros
         int[][] matrizQFiles=teste.matrizOrganizer(totalWords);
         int[] matrizQQuery=teste.matrizOrganizer(query,totalWords);
 

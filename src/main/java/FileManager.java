@@ -3,6 +3,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
+/**
+ *
+ */
 public class FileManager {
 
     private String[] files;
@@ -16,11 +19,22 @@ public class FileManager {
         filesName=new String[DEFAULT_SIZE];
     }
 
+    /**
+     * Método de gestão de ficheiros
+     *
+     * @param files_size
+     */
     public FileManager(int files_size){
         files = new String[files_size];
         filesName=new String[files_size];
     }
 
+    /**
+     * Método de inserção de ficheiros
+     *
+     * @param filePath
+     * @return
+     */
     public boolean insertFile(String filePath){
 
         String aux;
@@ -42,7 +56,12 @@ public class FileManager {
         return  true;
     }
 
-    //método para inserir query
+    /**
+     * Método para inserção de uma query
+     *
+     * @param query
+     * @return
+     */
     public Boolean insertQuery(String query){
         if(query.compareTo("")==0)return false;
         query=removeChars(query);
@@ -53,7 +72,13 @@ public class FileManager {
         return true;
     }
 
-    //método para ler ficheiro
+    /**
+     * Método para leitura de um ficheiro
+     *
+     * @param filePath
+     * @return
+     * @throws IOException
+     */
     private String readFile(String filePath) throws IOException {
 
         String file = "";
@@ -62,20 +87,36 @@ public class FileManager {
 
         return file;
     }
-    //método para remover digitos
+
+    /**
+     * Método de remoção de dígitos
+     *
+     * @param texto
+     * @return
+     */
     public String removeDigits(String texto){
         texto=texto.replaceAll("[0-9]","");
         return texto;
     }
 
-    //método para remover carateres especiais
+    /**
+     * Método para remover caracteres especiais de uma String
+     *
+     * @param texto
+     * @return
+     */
     public String removeChars(String texto){
         texto=texto.replaceAll("[\"\\,\\.\\?\\!\\|\\[\\]\\{\\}\\/\\;\\:\\«\\»\\<\\>\\@\\£\\€\\§\\#\\$\\%\\&\\=\\)\\(\\*\\+\\~\\^\\_\\-]","");
         return texto;
 
     }
 
-    //método para limpar palavras repetidas de uma string
+    /**
+     * Método para remover palavras repetidas de uma String
+     *
+     * @param texto
+     * @return
+     */
     public String[] uniqueWords(String texto){
         String[] aux=texto.split(" ");
         if(aux.length<2)
@@ -92,7 +133,12 @@ public class FileManager {
         return aux2;
     }
 
-    //método para obter a quantidade de cada palavra nos ficheiros
+    /**
+     * Método para obter a quantidade de cada palavra nos ficheiros
+     *
+     * @param uniqueWords
+     * @return
+     */
     public int[][] matrizOrganizer(String[] uniqueWords){
         int numeroDoc=filesCount,numeroPalavras=uniqueWords.length,count,h;
         String[] aux;
@@ -118,7 +164,13 @@ public class FileManager {
         return matrizM;
     }
 
-    //metodo para obter a quantidade de cada palavra na query
+    /**
+     * Método para obter a quantidade de cada palavra na query
+     *
+     * @param query
+     * @param uniqueWords
+     * @return
+     */
     public int[] matrizOrganizer(String query,String[] uniqueWords){
         int count,h;
         int[] queryArray=new int[uniqueWords.length];
@@ -137,7 +189,13 @@ public class FileManager {
         return queryArray;
     }
 
-    //método para alterar os valores da matrizM para os da fórmula
+    /**
+     * Método para alterar os valores da matrizM para os valores da fórmula
+     *
+     * @param matrizM
+     * @param totalWordsM
+     * @return
+     */
     public double[][] matrizModifier(int[][] matrizM,String[] totalWordsM){
         int contadoc=0;
         double[][] matrizOut=new double[filesCount][totalWordsM.length];
@@ -153,7 +211,14 @@ public class FileManager {
         return matrizOut;
     }
 
-    //método para alterar os valores da matrizQ para os da fórmula
+    /**
+     * Método para alterar os valores da matrizQ para os valores da fórmula
+     *
+     * @param queryArray
+     * @param matrizM
+     * @param totalWordsM
+     * @return
+     */
     public double[] matrizModifier(int[] queryArray,int[][] matrizM,String[] totalWordsM){
         double[] matrizOut=new double[totalWordsM.length];
         int contadoc=0;
@@ -168,7 +233,13 @@ public class FileManager {
         return matrizOut;
     }
 
-    //método para calcular o grau de similaridade
+    /**
+     * Método para calcular o grau de similaridade
+     *
+     * @param matrizMFiles
+     * @param matrizMQuery
+     * @return
+     */
     public double[] calculoGrauS(double[][] matrizMFiles,double[] matrizMQuery){
         double[] grauSim=new double[filesCount];
         for(int i=0;i<filesCount;i++){
@@ -188,10 +259,19 @@ public class FileManager {
         return grauSim;
     }
 
-    //método para retornar as palavras totais
+    /**
+     * Método para retornar as palavras totais
+     *
+     * @return
+     */
     public String getTotalWords(){
         return totalWords;
     }
 
+    /**
+     * Métood para obter uma query
+     *
+     * @return
+     */
     public String getQuery(){ return query; }
 }

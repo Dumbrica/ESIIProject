@@ -18,26 +18,26 @@ public class Teste {
         fm2 = new FileManager(20);
     }
 
-    //Teste com caminho para documento válido()
+    //Teste para insertFile com caminho para documento válido()
     @Test
     public void test1(){
         assertEquals(true,fm.insertFile("DOC.txt"));
     }
 
-    //Teste com caminho inválido()
+    //Teste para insertFile com caminho inválido()
     @Test
     public void test2(){
         assertEquals(false,fm.insertFile("DO.txt"));
     }
 
-    //Teste de remoção de digitos()
+    //Teste para removeDigits()
     @Test
     public void test3(){
 
         assertEquals("um dois tres",fm.removeDigits("um1 dois2 tres3"));
     }
 
-    //Teste de remoção de caracteres de pontuação()
+    //Teste para removeChars()
     @Test
     public void test4(){
 
@@ -104,13 +104,13 @@ public class Teste {
         );
     }
 
-    //Teste para insertQuery() para true
+    //Teste para insertQuery() quando query válida
     @Test
     public void test9(){
         assertTrue(fm.insertQuery("Um2! dois Tres"));
     }
 
-    //Teste para insertQuery() para false
+    //Teste para insertQuery() quando query inválida
     @Test
     public void test10(){
         assertFalse(fm.insertQuery(""));
