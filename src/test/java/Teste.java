@@ -84,4 +84,11 @@ public class Teste {
     public void test8(){
         assertEquals("um dois tres",fm.insertQuery("Um2! dois Tres"));
     }
+
+//teste para getQuery()
+    @Test
+    public void test9(){
+        fm.insertQuery("Um1 dois2 tres3!");
+assertEquals("um dois tres", fm.getQuery());
+    }
 }
