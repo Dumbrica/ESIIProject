@@ -117,5 +117,22 @@ public class Teste {
         assertEquals("um dois tres", fm.getQuery());
     }
 
-    
+    //Teste para matrizModifier() para matrizM
+    @Test
+    public void test11(){
+
+    }
+
+    //Teste para matrizModifier() para matrizQ
+    @Test
+    public void test12(){
+
+    }
+
+    //Teste para calculoGrauS
+    @Test
+    public void test13(){
+
+    }
+
 }
