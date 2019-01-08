@@ -41,6 +41,7 @@ public class FileManager {
 
         return  true;
     }
+
     //método para inserir query
     public String insertQuery(String query){
         query=removeChars(query);
@@ -50,6 +51,7 @@ public class FileManager {
         this.query=query;
         return this.query;
     }
+
     //método para ler ficheiro
     private String readFile(String filePath) throws IOException {
 
@@ -64,13 +66,15 @@ public class FileManager {
         texto=texto.replaceAll("[0-9]","");
         return texto;
     }
+
     //método para remover carateres especiais
     public String removeChars(String texto){
         texto=texto.replaceAll("[\"\\,\\.\\?\\!\\|\\[\\]\\{\\}\\/\\;\\:\\«\\»\\<\\>\\@\\£\\€\\§\\#\\$\\%\\&\\=\\)\\(\\*\\+\\~\\^\\_\\-]","");
         return texto;
 
     }
-    //Método para limpar palavras repetidas de uma string
+
+    //método para limpar palavras repetidas de uma string
     public String[] uniqueWords(String texto){
         String[] aux=texto.split(" ");
         if(aux.length<2)
@@ -86,6 +90,7 @@ public class FileManager {
         String[] aux2=unique.toArray(new String[0]);
         return aux2;
     }
+
     //método para obter a quantidade de cada palavra nos ficheiros
     public int[][] matrizOrganizer(String[] uniqueWords){
         int numeroDoc=filesCount,numeroPalavras=uniqueWords.length,count,h;
@@ -111,6 +116,7 @@ public class FileManager {
 
         return matrizM;
     }
+
     //metodo para obter a quantidade de cada palavra na query
     public int[] matrizOrganizer(String query,String[] uniqueWords){
         int count,h;
@@ -129,7 +135,8 @@ public class FileManager {
         }
         return queryArray;
     }
-    //método para alterar os valores da matrizM para os da formula
+
+    //método para alterar os valores da matrizM para os da fórmula
     public double[][] matrizModifier(int[][] matrizM,String[] totalWordsM){
         int contadoc=0;
         double[][] matrizOut=new double[filesCount][totalWordsM.length];
@@ -144,7 +151,8 @@ public class FileManager {
         }
         return matrizOut;
     }
-    //método para alterar os valores da matrizQ para os da formula
+
+    //método para alterar os valores da matrizQ para os da fórmula
     public double[] matrizModifier(int[] queryArray,int[][] matrizM,String[] totalWordsM){
         double[] matrizOut=new double[totalWordsM.length];
         int contadoc=0;
@@ -158,6 +166,8 @@ public class FileManager {
 
         return matrizOut;
     }
+
+    //método para calcular o grau de similaridade
     public double[] calculoGrauS(double[][] matrizMFiles,double[] matrizMQuery){
         double[] grauSim=new double[filesCount];
         for(int i=0;i<filesCount;i++){
@@ -176,8 +186,11 @@ public class FileManager {
         }
         return grauSim;
     }
+
+    //método para retornar as palavras totais
     public String getTotalWords(){
         return totalWords;
     }
+
     public String getQuery(){ return query; }
 }
