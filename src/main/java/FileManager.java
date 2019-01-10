@@ -205,7 +205,11 @@ public class FileManager {
                 for(int h=0;h<filesCount;h++){
                     if(matrizM[h][j]>0)contadoc++;
                 }
-                matrizOut[i][j]=matrizM[i][j]*(1+Math.log10((filesCount/contadoc)));
+                if(contadoc== 0){
+                    matrizOut[i][j]=0;
+                }else {
+                    matrizOut[i][j] = matrizM[i][j] * (1 + Math.log10((filesCount / contadoc)));
+                }
             }
         }
         return matrizOut;
@@ -227,7 +231,11 @@ public class FileManager {
             for(int h=0;h<filesCount;h++){
                 if(matrizM[h][i]>0)contadoc++;
             }
-            matrizOut[i]=queryArray[i]*(1+Math.log10((filesCount/contadoc)));
+            if(contadoc== 0) {
+                matrizOut[i] = 0;
+            }else {
+                matrizOut[i] = queryArray[i] * (1 + Math.log10((filesCount / contadoc)));
+            }
         }
 
         return matrizOut;

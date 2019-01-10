@@ -9,9 +9,16 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String query = br.readLine();
 
-        FileManager teste=new FileManager(2);
+        //leitura de ficheiros
+        FileManager teste=new FileManager(7);
         teste.insertFile("um.txt");
         teste.insertFile("dois.txt");
+        teste.insertFile("tres.txt");
+        teste.insertFile("ListaCompras.txt");
+        teste.insertFile("MenuRestaurante.txt");
+        teste.insertFile("ListaAlunosESTG.txt");
+        teste.insertFile("CreditosProjeto.txt");
+
         teste.insertQuery(query);
         query=teste.getQuery();
 
@@ -86,6 +93,7 @@ public class Main {
 
                     //número tem de ser >0
                     if(nFiles>0) {
+                        System.out.println("Lista c/ "+nFiles+" Ficheiros: \n");
                         System.out.println(teste.imprimirLLimitada(grauSim, teste.getFilesName(), nFiles));
                     }else{
                         System.out.println("Valor invalido");
