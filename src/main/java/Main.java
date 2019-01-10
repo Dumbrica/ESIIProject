@@ -10,7 +10,7 @@ public class Main {
         String query = br.readLine();
 
         //leitura de ficheiros
-        FileManager teste=new FileManager(10);
+        FileManager teste=new FileManager(14);
         teste.insertFile("um.txt");
         teste.insertFile("dois.txt");
         teste.insertFile("tres.txt");
@@ -21,6 +21,10 @@ public class Main {
         teste.insertFile("ListaAlunosESTG.txt");
         teste.insertFile("ListaAlunosESII.txt");
         teste.insertFile("CreditosProjeto.txt");
+        teste.insertFile("DiasSemana.txt");
+        teste.insertFile("MesesAno.txt");
+        teste.insertFile("CarBrands.txt");
+        teste.insertFile("LaptopBrands.txt");
 
         teste.insertQuery(query);
         query=teste.getQuery();

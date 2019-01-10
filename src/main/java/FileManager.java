@@ -294,7 +294,6 @@ public class FileManager {
             {
                 if (grauS[j] > grauS[i])
                 {
-                    System.out.println(grauS[j]+"-"+grauS[i]);
                     temp = grauS[i];
                     grauS[i] = grauS[j];
                     grauS[j] = temp;
