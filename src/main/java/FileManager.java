@@ -274,4 +274,56 @@ public class FileManager {
      * @return
      */
     public String getQuery(){ return query; }
+
+
+    public double[] orderGrauS(double[] grauS){
+
+        double temp;
+        String auxa;
+        for (int i = 0; i <= grauS.length; i++)
+        {
+            for (int j = i+1; j < grauS.length; j++)
+            {
+                if (grauS[j] > grauS[i])
+                {
+                    System.out.println(grauS[j]+"-"+grauS[i]);
+                    temp = grauS[i];
+                    grauS[i] = grauS[j];
+                    grauS[j] = temp;
+
+                    auxa=filesName[i];
+                    filesName[i]=filesName[j];
+                    filesName[j]=auxa;
+                }
+            }
+        }
+        return  grauS;
+    }
+    public String[] getFilesName(){
+        return filesName;
+    }
+    public String imprimirLCompleta(double[] grauS,String[] files){
+        String imprime="Ficheiro | Grau\n";
+
+            for(int i=0;i<grauS.length;i++){
+                imprime+=files[i]+" | " + (float)grauS[i]+"\n";
+            }
+        return imprime;
+    }
+    public String imprimirLLimitada(double[] grauS,String[] files,int quant){
+
+        String imprime="Ficheiro | Grau\n";
+
+        for(int i=0;i<grauS.length && i<quant;i++){
+            imprime+=files[i]+" | " + (float)grauS[i]+"\n";
+        }
+        return imprime;
+    }
+    public String imprimirLGrauLimite(double[] grauS,String[] files,double limite){
+        String imprime="";
+        for(int i=0;i<grauS.length && grauS[i]>limite;i++){
+            imprime+=files[i]+" | " + (float)grauS[i]+"\n";
+        }
+        return imprime;
+    }
 }

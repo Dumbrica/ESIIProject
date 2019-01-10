@@ -133,13 +133,51 @@ public class Teste {
     //Teste para matrizModifier() para matrizM
     @Test
     public void test13(){
+        fm.insertFile("um.txt");
+        fm.insertFile("dois.txt");
+        fm.insertQuery("um dois tres");
+        String query=fm.getQuery();
+        String[] totalWords =fm.uniqueWords(fm.getTotalWords());
+        int[][] matrizQFiles=fm.matrizOrganizer(totalWords);
+        int[] matrizQQuery=fm.matrizOrganizer(query,totalWords);
+
+        double [][] matrizMFiles=fm.matrizModifier(matrizQFiles,totalWords);
+        assertAll(
+                () -> assertEquals((1*(1+Math.log10(2/1))),matrizMFiles[0][0]),
+                () -> assertEquals((1*(1+Math.log10(2/1))),matrizMFiles[0][1]),
+                () -> assertEquals((1*(1+Math.log10(2/2))),matrizMFiles[0][2]),
+                () -> assertEquals((0*(1+Math.log10(2/1))),matrizMFiles[0][3]),
+                () -> assertEquals((0*(1+Math.log10(2/1))),matrizMFiles[0][4]),
+                () -> assertEquals((0*(1+Math.log10(2/1))),matrizMFiles[1][0]),
+                () -> assertEquals((0*(1+Math.log10(2/1))),matrizMFiles[1][1]),
+                () -> assertEquals((1*(1+Math.log10(2/2))),matrizMFiles[1][2]),
+                () -> assertEquals((1*(1+Math.log10(2/1))),matrizMFiles[1][3]),
+                () -> assertEquals((1*(1+Math.log10(2/1))),matrizMFiles[1][4])
+
+        );
 
     }
 
     //Teste para matrizModifier() para matrizQ
     @Test
     public void test14(){
+        fm.insertFile("um.txt");
+        fm.insertFile("dois.txt");
+        fm.insertQuery("um dois tres");
+        String query=fm.getQuery();
+        String[] totalWords =fm.uniqueWords(fm.getTotalWords());
+        int[][] matrizQFiles=fm.matrizOrganizer(totalWords);
+        int[] matrizQQuery=fm.matrizOrganizer(query,totalWords);
 
+        double [] matrizMQuery=fm.matrizModifier(matrizQQuery,matrizQFiles,totalWords);
+        assertAll(
+                () -> assertEquals((1*(1+Math.log10(2/1))),matrizMQuery[0]),
+                () -> assertEquals((1*(1+Math.log10(2/1))),matrizMQuery[1]),
+                () -> assertEquals((1*(1+Math.log10(2/2))),matrizMQuery[2]),
+                () -> assertEquals((0*(1+Math.log10(2/1))),matrizMQuery[3]),
+                () -> assertEquals((0*(1+Math.log10(2/1))),matrizMQuery[4])
+
+        );
     }
 
     //Teste para calculoGrauS
