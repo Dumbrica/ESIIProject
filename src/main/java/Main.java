@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        System.out.println("Insira a query");
+        System.out.println("\nSTART...\n\nInsira a query para pesquisa de ficheiros com similaridade: ");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String query = br.readLine();
 
@@ -40,25 +40,60 @@ public class Main {
             System.out.println(i);
         }*/
         grauSim=teste.orderGrauS(grauSim);
-        int opcao=0,quantFMostrar=3;
-        double limite=0.2;
+        int opcao=0;
 
+        //Menu de opções
         do {
-            System.out.println("Escolha opção: 1 - Lista Completa, 2 - Lista Acima de x, 3 - Lista de x Ficheiros, 4 - Sair");
-            String read=br.readLine();
-            opcao =read.
+            System.out.println("\nSelecione uma alternativa: \n\n1 - Imprimir Lista Completa \n2 - Imprimir Lista c/ Grau de Similaridade Superior a Valor Especifico" +
+                    "\n3 - Imprimir Lista c/ Valor Especifico de Ficheiros \n4 - Sair\n");
+            String readMenu =br.readLine();
+            opcao =Integer.parseInt(readMenu);
             switch (opcao){
+                //Imprimir Lista Completa
                 case 1:
+                    System.out.println("\nSelecionou *Imprimir Lista Completa*\nLista de Ficheiros Completa: \n");
                     System.out.println(teste.imprimirLCompleta(grauSim,teste.getFilesName()));
                     break;
+
+                //Imprimir Lista c/ Grau de Semelhança Superior a Valor Especifico
                 case 2:
-                    //fazer reader com limite entre 0 e 1
-                    System.out.println(teste.imprimirLGrauLimite(grauSim,teste.getFilesName(),limite));
+                    //valorSem = valor de similaridade entre a query e ficheiros
+                    double valorSim;
+                    System.out.println("\nSelecionou *Imprimir Lista c/ Grau de Similaridade Superior a Valor Especifico*\n\nInsira um valor entre 0 e 1: ");
+
+                    //input de valorSim
+                    String read2 = br.readLine();
+                    valorSim = Double.parseDouble(read2);
+
+                    //número tem de ser 0<valorSem<1
+                    if(valorSim>=0&&valorSim<=1){
+                        System.out.println("Lista de Ficheiros c/ Grau de Similaridade Superior a "+valorSim+": \n");
+                        System.out.println(teste.imprimirLGrauLimite(grauSim,teste.getFilesName(),valorSim));
+                    }else{
+                        System.out.println("Valor invalido");
+                    }
                     break;
+
+                //Selecionou *Imprimir Lista c/ Valor Especifico de Ficheiros
                 case 3:
-                    //fazer reader com numero maximo de ficheiros a mostrar >0
-                    System.out.println(teste.imprimirLLimitada(grauSim,teste.getFilesName(),quantFMostrar));break;
-                case 0:
+                    //nFiles = número de ficheiros a imprimir
+                    int nFiles;
+                    System.out.println("\nSelecionou *Imprimir Lista c/ Valor Especifico de Ficheiros*\n\nInsira um valor superior a 0: ");
+
+                    //input de nFiles
+                    String read3 =br.readLine();
+                    nFiles = Integer.parseInt(read3);
+
+                    //número tem de ser >0
+                    if(nFiles>0) {
+                        System.out.println(teste.imprimirLLimitada(grauSim, teste.getFilesName(), nFiles));
+                    }else{
+                        System.out.println("Valor invalido");
+                    }
+                    break;
+
+                //Sair
+                case 4:
                     return ;
                 default:
             }
