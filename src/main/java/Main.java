@@ -10,11 +10,13 @@ public class Main {
         String query = br.readLine();
 
         //leitura de ficheiros
-        FileManager teste=new FileManager(14);
+        FileManager teste=new FileManager(16);
         teste.insertFile("um.txt");
         teste.insertFile("dois.txt");
         teste.insertFile("tres.txt");
+        teste.insertFile("ACDC.txt");
         teste.insertFile("ListaCompras.txt");
+        teste.insertFile("ListaComprasNatal.txt");
         teste.insertFile("MenuRestaurante.txt");
         teste.insertFile("MenuCafe.txt");
         teste.insertFile("BikeShop.txt");
