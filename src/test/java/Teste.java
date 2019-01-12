@@ -183,6 +183,24 @@ public class Teste {
     //Teste para calculoGrauS
     @Test
     public void test15(){
+        fm.insertFile("um.txt");
+        fm.insertFile("dois.txt");
+        fm.insertQuery("um dois tres");
+        String query=fm.getQuery();
+        String[] totalWords =fm.uniqueWords(fm.getTotalWords());
+        int[][] matrizQFiles=fm.matrizOrganizer(totalWords);
+        int[] matrizQQuery=fm.matrizOrganizer(query,totalWords);
+        double[][] matrizMFiles=fm.matrizModifier(matrizQFiles,totalWords);
+        double[] matrizMQuery=fm.matrizModifier(matrizQQuery,matrizQFiles,totalWords);
+
+        double[] grauSim=fm.calculoGrauS(matrizMFiles,matrizMQuery);
+        for(double i :grauSim){
+            System.out.println(i);
+        }
+        assertAll(
+                () -> assertEquals(1.0000000000000002,grauSim[0]),
+                () -> assertEquals(0.22803154893427774,grauSim[1])
+        );
 
     }
 
