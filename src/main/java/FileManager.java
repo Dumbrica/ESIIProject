@@ -309,6 +309,8 @@ public class FileManager {
     public String[] getFilesName(){
         return filesName;
     }
+
+
     public String imprimirLCompleta(double[] grauS,String[] files){
         String imprime="Ficheiro | Grau\n";
 

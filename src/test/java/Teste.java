@@ -194,13 +194,32 @@ public class Teste {
         double[] matrizMQuery=fm.matrizModifier(matrizQQuery,matrizQFiles,totalWords);
 
         double[] grauSim=fm.calculoGrauS(matrizMFiles,matrizMQuery);
-        for(double i :grauSim){
-            System.out.println(i);
-        }
+
         assertAll(
                 () -> assertEquals(1.0000000000000002,grauSim[0]),
                 () -> assertEquals(0.22803154893427774,grauSim[1])
         );
+
+        }
+
+        @Test// Teste imprimirLCompleta
+        public void test16(){
+
+            fm.insertFile("BikeShop.txt");
+            fm.insertFile("um.txt");
+            fm.insertFile("dois.txt");
+            fm.insertQuery("um dois tres ");
+            String query=fm.getQuery();
+            String[] totalWords =fm.uniqueWords(fm.getTotalWords());
+            int[][] matrizQFiles=fm.matrizOrganizer(totalWords);
+            int[] matrizQQuery=fm.matrizOrganizer(query,totalWords);
+            double[][] matrizMFiles=fm.matrizModifier(matrizQFiles,totalWords);
+            double[] matrizMQuery=fm.matrizModifier(matrizQQuery,matrizQFiles,totalWords);
+
+            double[] grauSim=fm.calculoGrauS(matrizMFiles,matrizMQuery);
+
+            grauSim = fm.orderGrauS(grauSim);
+            assertEquals("Ficheiro | Grau\num.txt | 1.0\ndois.txt | 0.18643588\nBikeShop.txt | 0.0\n",fm.imprimirLCompleta(grauSim,fm.getFilesName()));
 
     }
 
