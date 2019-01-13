@@ -277,11 +277,12 @@ public class FileManager {
     }
 
     /**
-     * Métood para obter uma query
+     * Método para obter uma query
      *
      * @return
      */
     public String getQuery(){ return query; }
+
 
 
     public double[] orderGrauS(double[] grauS){
@@ -306,6 +307,8 @@ public class FileManager {
         }
         return  grauS;
     }
+
+
     public String[] getFilesName(){
         return filesName;
     }

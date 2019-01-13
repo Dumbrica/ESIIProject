@@ -265,4 +265,46 @@ public class Teste {
 
     }
 
+    @Test// Teste imprimirLLimitada com menos ficheiros do que a quantidade que queremos imprimir
+    public void test19(){
+
+        fm.insertFile("BikeShop.txt");
+        fm.insertFile("um.txt");
+        fm.insertFile("dois.txt");
+        fm.insertQuery("um dois tres ");
+        String query=fm.getQuery();
+        String[] totalWords =fm.uniqueWords(fm.getTotalWords());
+        int[][] matrizQFiles=fm.matrizOrganizer(totalWords);
+        int[] matrizQQuery=fm.matrizOrganizer(query,totalWords);
+        double[][] matrizMFiles=fm.matrizModifier(matrizQFiles,totalWords);
+        double[] matrizMQuery=fm.matrizModifier(matrizQQuery,matrizQFiles,totalWords);
+        double[] grauSim=fm.calculoGrauS(matrizMFiles,matrizMQuery);
+
+        grauSim = fm.orderGrauS(grauSim);
+        assertEquals("Ficheiro | Grau\num.txt | 1.0\ndois.txt | 0.18643588\nBikeShop.txt | 0.0\n",fm.imprimirLLimitada(grauSim,fm.getFilesName(),6));
+
+    }
+
+    @Test// Teste imprimirLGrauLimite com nenhum ficheiro superior ou igual ao grau enviado
+    public void test20(){
+
+        fm.insertFile("BikeShop.txt");
+        fm.insertFile("ListaAlunosESII.txt");
+        fm.insertFile("MenuCafe.txt");
+        fm.insertFile("dois.txt");
+        fm.insertQuery("um dois tres ");
+        String query=fm.getQuery();
+        String[] totalWords =fm.uniqueWords(fm.getTotalWords());
+        int[][] matrizQFiles=fm.matrizOrganizer(totalWords);
+        int[] matrizQQuery=fm.matrizOrganizer(query,totalWords);
+        double[][] matrizMFiles=fm.matrizModifier(matrizQFiles,totalWords);
+        double[] matrizMQuery=fm.matrizModifier(matrizQQuery,matrizQFiles,totalWords);
+        double[] grauSim=fm.calculoGrauS(matrizMFiles,matrizMQuery);
+
+        grauSim = fm.orderGrauS(grauSim);
+        assertEquals("Ficheiro | Grau\n",fm.imprimirLGrauLimite(grauSim,fm.getFilesName(),0.95));
+    }
+
+
+
 }
