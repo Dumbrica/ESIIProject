@@ -288,9 +288,8 @@ public class Teste {
     @Test// Teste imprimirLGrauLimite com nenhum ficheiro superior ou igual ao grau enviado
     public void test20(){
 
-        fm.insertFile("BikeShop.txt");
-        fm.insertFile("ListaAlunosESII.txt");
-        fm.insertFile("MenuCafe.txt");
+
+        fm.insertFile("um.txt");
         fm.insertFile("dois.txt");
         fm.insertQuery("um dois tres ");
         String query=fm.getQuery();
@@ -302,7 +301,7 @@ public class Teste {
         double[] grauSim=fm.calculoGrauS(matrizMFiles,matrizMQuery);
 
         grauSim = fm.orderGrauS(grauSim);
-        assertEquals("Ficheiro | Grau\n",fm.imprimirLGrauLimite(grauSim,fm.getFilesName(),0));
+        assertEquals("Ficheiro | Grau\num.txt | 1.0\ndois.txt | 0.22803155\n",fm.imprimirLGrauLimite(grauSim,fm.getFilesName(),0));
     }
 
 
