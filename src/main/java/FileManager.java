@@ -277,11 +277,12 @@ public class FileManager {
     }
 
     /**
-     * Métood para obter uma query
+     * Método para obter uma query
      *
      * @return
      */
     public String getQuery(){ return query; }
+
 
 
     public double[] orderGrauS(double[] grauS){
@@ -306,9 +307,13 @@ public class FileManager {
         }
         return  grauS;
     }
+
+
     public String[] getFilesName(){
         return filesName;
     }
+
+
     public String imprimirLCompleta(double[] grauS,String[] files){
         String imprime="Ficheiro | Grau\n";
 
@@ -327,7 +332,7 @@ public class FileManager {
         return imprime;
     }
     public String imprimirLGrauLimite(double[] grauS,String[] files,double limite){
-        String imprime="";
+        String imprime="Ficheiro | Grau\n";
         for(int i=0;i<grauS.length && grauS[i]>limite;i++){
             imprime+=files[i]+" | " + (float)grauS[i]+"\n";
         }
