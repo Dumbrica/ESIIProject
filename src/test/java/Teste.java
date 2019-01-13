@@ -302,7 +302,7 @@ public class Teste {
         double[] grauSim=fm.calculoGrauS(matrizMFiles,matrizMQuery);
 
         grauSim = fm.orderGrauS(grauSim);
-        assertEquals("Ficheiro | Grau\n",fm.imprimirLGrauLimite(grauSim,fm.getFilesName(),0.95));
+        assertEquals("Ficheiro | Grau\n",fm.imprimirLGrauLimite(grauSim,fm.getFilesName(),0));
     }
 
 
