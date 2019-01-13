@@ -329,7 +329,7 @@ public class FileManager {
         return imprime;
     }
     public String imprimirLGrauLimite(double[] grauS,String[] files,double limite){
-        String imprime="";
+        String imprime="Ficheiro | Grau\n";
         for(int i=0;i<grauS.length && grauS[i]>limite;i++){
             imprime+=files[i]+" | " + (float)grauS[i]+"\n";
         }
