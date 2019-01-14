@@ -285,6 +285,12 @@ public class FileManager {
 
 
 
+    /**
+     * Método que ordena os ficheiros pelo o seu grau de similaridade
+     *
+     * @param grauS
+     * @return
+     */
     public double[] orderGrauS(double[] grauS){
 
         double temp;
@@ -308,12 +314,24 @@ public class FileManager {
         return  grauS;
     }
 
-
+    /**
+     * Método para retornar o nome dos ficheiros
+     *
+     * @return
+     */
     public String[] getFilesName(){
         return filesName;
     }
 
 
+
+    /**
+     * Método para imprimir a lista de ficheiros e o seu grau de similaridade
+     *
+     * @param grauS
+     * @param files
+     * @return
+     */
     public String imprimirLCompleta(double[] grauS,String[] files){
         String imprime="Ficheiro | Grau\n";
 
@@ -322,6 +340,16 @@ public class FileManager {
             }
         return imprime;
     }
+
+
+    /**
+     * Método para imprimir uma lista limitada de ficheiros e o seu grau de similaridade , quantidade definida pelo o utilizador
+     *
+     * @param grauS
+     * @param files
+     * @param quant
+     * @return
+     */
     public String imprimirLLimitada(double[] grauS,String[] files,int quant){
 
         String imprime="Ficheiro | Grau\n";
@@ -331,6 +359,17 @@ public class FileManager {
         }
         return imprime;
     }
+
+
+
+    /**
+     * Método para imprimir uma lista limitada de ficheiros e o seu grau de similaridade , o utilizador escolhe o minimo de similaridade que quer
+     *
+     * @param grauS
+     * @param files
+     * @param limite
+     * @return
+     */
     public String imprimirLGrauLimite(double[] grauS,String[] files,double limite){
         String imprime="Ficheiro | Grau\n";
         for(int i=0;i<grauS.length && grauS[i]>limite;i++){
